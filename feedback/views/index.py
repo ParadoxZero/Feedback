@@ -14,6 +14,6 @@ def index(request):
         context['error_msg'] = PASSWORD_ERROR_MESSAGE
     elif error == "user":
         context['error_msg'] = USERNAME_ERROR_MESSAGE
-    render(request, 'feedback/index.html', context)
+    render(request, 'feedback/login.html', context)
 
 
