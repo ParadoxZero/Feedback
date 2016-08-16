@@ -1,0 +1,3 @@
+
+class UserAuthenticationFailedException(Exception):
+    pass
