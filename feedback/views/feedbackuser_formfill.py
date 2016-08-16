@@ -1,7 +1,22 @@
-from feedback.models import Forms
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, HttpResponseBadRequest
+from django.shortcuts import render
+
+from feedback.models import Forms, TextBox, MultiLine, CheckBox, MCQ, Option
 from feedback.views.decorators import feedbackuser_login_required
 
 
 @feedbackuser_login_required
 def formfill(request, form_id):
-    form = Forms.objects.get()
+    try:
+        form = Forms.objects.get(pk=form_id)
+    except KeyError:
+        return HttpResponseRedirect(reverse("feedback_feedbackuser_formlist"))
+    form_item_list = form.getInputs()
+    quicksort(form_item_list, 0, len(form_item_list) - 1)
+    context = {
+        'item_list': form_item_list
+    }
+    return render(request, 'feedback/feedbackuser_formfil', context)
+
+
