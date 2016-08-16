@@ -12,6 +12,8 @@ def index(request):
         return render(request, 'feedback/index.html')
     if error == "pass":
         context['error_msg'] = PASSWORD_ERROR_MESSAGE
+    elif error == "user":
+        context['error_msg'] = USERNAME_ERROR_MESSAGE
     render(request, 'feedback/index.html', context)
 
 

@@ -1,11 +1,10 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 
-from feedback.models import FeedbackUser, Forms, Survey
+from feedback.models import FeedbackUser
 
 
-def formlist(request):
+def authenticate(request):
     try:
         username = request.POST['username']
     except KeyError:
@@ -14,9 +13,5 @@ def formlist(request):
         user = FeedbackUser.objects.get(user_name=username)
     except FeedbackUser.DoesNotExist:
         return HttpResponseRedirect(reverse('feedback_index') + "?error=user")
-    form_list = Forms.objects.all().filter(user=user,
-                                           finished=False,
-                                           survey__in=Survey.objects.all().filter(finished=False))
-    return render(request, 'feedback/feedbackuser_formlist', context={
-        'form_list': form_list
-    })
+    request.session['user'] = user
+    return HttpResponseRedirect(reverse('feedback_feedbackuser_formlist'))
