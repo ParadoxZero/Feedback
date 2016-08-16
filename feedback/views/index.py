@@ -9,7 +9,7 @@ def index(request):
     try:
         error = request.GET['error']
     except KeyError:
-        return render(request, 'feedback/index.html')
+        return render(request, 'feedback/login.html')
     if error == "pass":
         context['error_msg'] = PASSWORD_ERROR_MESSAGE
     elif error == "user":

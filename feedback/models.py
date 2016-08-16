@@ -1,11 +1,28 @@
+from random import Random
+import string
 from django.db import models
 
-
 # Create your models here.
+from django.utils import timezone
+
 
 class FeedbackUser(models.Model):
     user_name = models.CharField(max_length=200)
     date_created = models.DateField()
+
+    @staticmethod
+    def create_users(number):
+        for _ in range(number):
+            u = FeedbackUser()
+            while True:
+                try:
+                    # noinspection PyArgumentList
+                    u.user_name = ''.join([Random.choice(string.ascii_lowercase) for _ in range(6)])
+                    u.date_created = timezone.now()
+                    u.save()
+                    break
+                except Exception:  # TODO
+                    pass
 
     def __str__(self):
         return self.user_name
