@@ -1,10 +1,23 @@
 @import 'https://fonts.googleapis.com/css?family=Alegreya|Russo+One';
 
 body{
-    background-image: url('paper_texture304.jpg');
+    background-image: url('img/paper_texture304.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+
+.error{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image:url('img/exclamation5.png');
+
+
 }
 
 input[type=text], input[type=password] {

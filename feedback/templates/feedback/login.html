@@ -7,6 +7,10 @@
 
 
 <body>
+    {% if {{ error_msg }} %}
+        <div class="error">{{ error_msg }}</div>
+    {% endif %}
+
     <div class="container" id="mainpage">
         <header>Welcome to online feedback system</header>
         <p>Login to continue</p>
