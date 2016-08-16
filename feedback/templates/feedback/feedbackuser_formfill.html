@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    {% load staticfiles %}
+
+    <link rel="stylesheet" href="{% static 'form.css' %}" />
+    <meta charset="UTF-8">
+
+</head>
+<title>Forms</title>
+<body>
+    <header></header>
+    <form action="#" method="POST">
+        <ol>
+            {% for item in item_list %}
+                {% if item.0 == 'mcq' %}
+                    <li><labelabc><br>{{ item.1.text }}</labelabc></li>
+                    <div class="radioOptions">
+                        {% for option in item.2 %}
+                            <label><input type="radio" value="{{ option.pk }}" name="{{ item.1.position }}">{{ option.text }}</label>
+                        {% endfor %}
+                    </div>
+
+                {% elif item.0 == 'cb' %}
+                    <li><labelabc><br>{{ item.1.text }}</labelabc></li>
+                    <div class="checkboxOptions">
+                        {% for option in item.2 %}
+                            <label><input type="checkbox" name={{ item.1.position }}/>{{ option.text }}</label>
+                        {% endfor %}
+                    </div>
+
+                {% elif item.0 == 'tb' %}
+                    <li><labelabc><br>{{ item.1.text }}</labelabc></li>
+                    <div class="singleLineTextArea">
+                        <input type="text" name="{{ item.1.position }}" placeholder="Write here" />
+                    </div>
+                    
+                {% elif item.0 == 'mb' %}
+                    <li><labelabc><br>{{ item.1.text }}<br></labelabc></li>
+                     <div class="multiLine">
+                        <textarea class="textArea" name="{{ item.1.position }}" cols="30" rows="5" placeholder="Write your heart out here.."></textarea>
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+        </ol>
+        <div class="submit">
+            <br><br><input type="button" name=submit value="Submit" />
+        </div>
+    </form>
+    <footer>
+        <em>Computer Science Department</em><br>
+        <a href="http://www.rit.ac.in" target="_blank" ><h3><i>Rajiv Gandhi Institute of technology, Kottayam</i></h3></a>
+    </footer>
+
+</body>
