@@ -14,7 +14,8 @@ def formfill(request, form_id):
         return HttpResponseRedirect(reverse("feedback_feedbackuser_formlist"))
     form_item_list = form.getInputs()
     context = {
-        'item_list': form_item_list
+        'item_list': form_item_list,
+        'form_name': form.form_name
     }
     return render(request, 'feedback/feedbackuser_formfil', context)
 
