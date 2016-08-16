@@ -10,6 +10,6 @@ def formlist(request):
     form_list = Forms.objects.all().filter(user=user,
                                            finished=False,
                                            survey__in=Survey.objects.all().filter(finished=False))
-    return render(request, 'feedback/feedbackuser_formlist', context={
+    return render(request, 'feedback/feedbackuser_formlist.html', context={
         'form_list': form_list
     })
