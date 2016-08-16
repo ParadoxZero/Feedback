@@ -26,3 +26,7 @@ def authenticate_admin(request):
         return HttpResponseRedirect(reverse('admin_login') + "?error=true")
 
     login(request, user)
+
+
+def profile(request):
+    return render(request, 'feedback/admin/profile.html')

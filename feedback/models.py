@@ -30,7 +30,7 @@ class FeedbackUser(models.Model):
 
 class Survey(models.Model):
     name = models.CharField(max_length=500)
-    date_created = models.DateField(primary_key=True)
+    date_created = models.DateField()
     finished = models.BooleanField(default=False)
 
 
