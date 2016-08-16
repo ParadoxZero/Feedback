@@ -11,7 +11,7 @@ class - camel case , starting with capital eg TestRun
 name - camel case with small letter start eg testRun
 '''
 
-urlpatterns = [
+urlpatterns =[
     url(r'^$', views.index.index, name="feedback_index"),
     url(r'student/$', views.feedbackuser_authenticate.authenticate, name="feedback_feedbackuser_authenticate"),
     url(r'student/form/$', views.feedbackuser_formlist.formlist, name="feedback_feedbackuser_formlist'"),
