@@ -13,7 +13,6 @@ def formfill(request, form_id):
     except KeyError:
         return HttpResponseRedirect(reverse("feedback_feedbackuser_formlist"))
     form_item_list = form.getInputs()
-    quicksort(form_item_list, 0, len(form_item_list) - 1)
     context = {
         'item_list': form_item_list
     }

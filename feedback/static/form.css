@@ -1,0 +1,117 @@
+@import 'https://fonts.googleapis.com/css?family=Bree+Serif';
+@import 'https://fonts.googleapis.com/css?family=Exo';
+@import 'https://fonts.googleapis.com/css?family=Bree+Serif';
+body {
+    margin: 5%;
+    background-image: url("paper_texture304.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+header {
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+    font-size: 30px;
+}
+
+form {
+    background: white;
+    border: 1px solid lightgray;
+    margin: 2% 15% 15% 15%;
+    padding: 0% 2% 2% 2%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+    border-radius: 20px;
+    min-height: 100%;
+}
+
+form:after {
+    content: "";
+    display: block;
+}
+
+div labelabc {
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+div label {
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+}
+
+input[type=text] {
+    padding: 8px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 150px;
+    -webkit-transition: width .35s ease-in-out;
+    transition: width .35s ease-in-out;
+    margin: 8px 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+}
+
+input[type=text]:focus {
+    width: 250px;
+    border: 2px solid darkgray;
+}
+
+textarea.textArea {
+    transition: .35s ease-in-out;
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    word-wrap: break-word;
+}
+
+textarea.textArea:focus {
+    border: 2px solid darkgray;
+}
+
+div.submit {
+    display: flex;
+    justify-content: center;
+}
+
+input[type=button] {
+    margin-top: 50px;
+    background: white;
+    border: 2px solid green;
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    transition-duration: 0.4s;
+}
+
+input[type=button]:hover {
+    background: green;
+    cursor: pointer;
+}
+
+div.radioOptions,
+div.checkboxOptions,
+div.singleLineTextArea,
+textarea.textArea {
+    margin-top: 8px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    text-align: center;
+}
+
+div.radioOptions:hover {
+    cursor: pointer;
+}
