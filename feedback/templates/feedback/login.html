@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <head>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}" />
+    <link rel="stylesheet" href="{% static 'loginuser.css' %}" />
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <meta charset="UTF-8">
 </head>
 
 
 <body>
-    {% if error_msg %}
-        <div class="error">{{ error_msg }}</div>
-    {% endif %}
+<div class="container" id="mainpage">
+    <header style="text-align: center">Welcome to online feedback system</header>
+    <p style="text-align: center">Login to continue</p>
 
-    <div class="container" id="mainpage">
-        <header>Welcome to online feedback system</header>
-        <p>Login to continue</p>
+<button class="mainbutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto ">
+  Login</button>
 
-    <button class="mainbutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<div id="id01" class="modal">
 
-        <div id="id01" class="modal">
-
-          <form class="modal-content animate" action="{% url 'feedback_index' %}">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" >&times;</span>
-              <img src={% static 'img/1407306657Ritktym.jpg' %} alt="Avatar" class="avatar">
-            </div>
-
-            <div class="container" id="loginDetails">
-              <labelabc>
-              <input type="text" placeholder="Enter Username" name="username" required></labelabc><br>
-
-              <labelabc>
-              <input type="password" placeholder="Enter Password" name="password" required></labelabc><br>
-
-              <button type="submit" name="submit" value="submit" >Authenticate</button>
-            </div>
-          </form>
-        </div>
+  <div class="modal-content animate" >
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" >&times;</span>
+      <img src="1407306657Ritktym.jpg" alt="Avatar" class="avatar">
     </div>
-</body>
 
+    <div class="container w3-container" id="loginDetails">
+      <div class="container w3-row">
+      <a href="#" onclick="account(event, 'Student');">
+        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Student</div>
+      </a>
+      <a href="#" onclick="account(event, 'Teacher');">
+        <div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Teacher</div>
+      </a>
+
+
+      <form action="#" id="Student" class="w3-container loginform">
+        <br><br><br><labelabc>
+        <input type="text" placeholder="Enter Username" name="username" required></labelabc><br>
+        <button type="submit" name="submit" id="authenticate" value="submit">Authenticate</button>
+      </form>
+
+      <form action="#" id="Teacher" class="w3-container loginform">
+        <br><br><br><labelabc>
+          <input type="text" placeholder="Enter Username" name="username" required>
+        </labelabc>
+        <labelabc>
+          <input type="password" placeholder="Enter Password" name="password" required>
+        </labelabc><br>
+        <labellogin>
+        <button type="submit" id="authenticate" name="submit" value="submit">Authenticate</button>
+        </labellogin>
+      </form>
+    </div>
+    </div>
+
+      </div>
+</div>
+<script>
+function account(evt, user) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("loginform");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+  }
+  document.getElementById(user).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-border-red";
+}
+</script>
+
+</body>
+</html>

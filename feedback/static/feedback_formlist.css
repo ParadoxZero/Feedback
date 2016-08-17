@@ -1,0 +1,42 @@
+body{
+    margin: 4% 10% 2% 8%;
+    background-image: url('paper_texture304.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+a:link{
+    text-decoration: none;
+
+}
+a:hover{
+    text-decoration: underline;
+}
+th#head{
+    background-color: lightblue;
+}
+
+th,td{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 3px;
+    padding: 15px;
+    text-align: center;
+    border-left:solid gray 1px;
+    border-top:solid gray 1px;
+
+}
+th{
+    width: 100%;
+    border-top: none;
+
+}
+
+tr:hover{
+    background-color: lightgrey;
+}
+table{
+    border: 1px solid gray;
+    border-collapse: separate;
+    border-radius: 10px;
+}
+

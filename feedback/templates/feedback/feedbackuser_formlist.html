@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<title>Form List</title>
+
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'feedback_formlist.css' %}" />
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th id="head">Name of form to be filled</th>
+            <th id="head">Creation date</th>
+            <th id="head">Expiring date</th>
+        </tr>
+        {% for form in form_list %}
+            <tr>
+                <th><a href="#">{{ form.form_name }}</a></th>
+                <th>{{ form.date_created }}</th>
+                <th>--------</th>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
