@@ -57,3 +57,28 @@ def close_survey_validate(request):
     s.finished = True
     s.save()
     return HttpResponseRedirect(reverse("admin_survey_index"))
+
+
+def edit_survey(request):
+    try:
+        error = request.GET['error']
+        context = {'error_message': 'some error has occured'} # TODO error message
+    except KeyError:
+        context = {}
+    s = Survey.objects.all()
+    context['survey_list'] = s
+    return render(request, 'feedback/admin/survey_edit.html', context)
+
+
+def edit_survey_validate(request):
+    try:
+        s = int(request.POST['survey'])
+        name = request.POST['name']
+        delete = request.POST['delete']
+    except KeyError:
+        return HttpResponseRedirect(reverse('admin_survey_edit')+"?error=error")
+    if bool(delete):
+        Survey.objects.get(pk=s).delete()
+    else:
+        Survey.objects.get(pk=s).name = name
+    return HttpResponseRedirect(reverse('admin_survey_index'))

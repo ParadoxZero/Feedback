@@ -3,7 +3,7 @@ from django.conf.urls import url
 from feedback import views, admin
 from feedback.views import index, feedbackuser_authenticate, feedbackuser_formlist, feedbackuser_formfill
 from feedback.views import feedbackuser_form_validate
-from feedback.admin import login_view, survey
+from feedback.admin import login_view, survey, password, user_views
 
 '''
 Naming convention :
@@ -16,13 +16,22 @@ urlpatterns = [
     url(r'^admin$', admin.login_view.login_admin, name="admin_login"),
     url(r'^admin/auth$', admin.login_view.authenticate_admin, name="admin_authenticate"),
     url(r'^admin/profile$', admin.login_view.profile, name="admin_profile"),
+    # Survey urls
     url(r'^admin/profile/survey$', admin.survey.index, name="admin_survey_index"),
     url(r'^admin/profile/survey/add$', admin.survey.add_survey, name="admin_survey_add"),
     url(r'^admin/profile/survey/add/validate$', admin.survey.add_survey_validate, name="admin_survey_add_validate"),
     url(r'^admin/profile/survey/close$', admin.survey.close_survey, name="admin_survey_close"),
     url(r'^admin/profile/survey/close/validate$', admin.survey.close_survey_validate,
         name="admin_survey_close_validate"),
-    url(r'admin/profile/survey/edit')
+    url(r'admin/profile/survey/edit$', admin.survey.edit_survey, name="admin_survey_edit"),
+    url(r'admin/profile/survey/edit/validate$', admin.survey.edit_survey_validate, name="admin_survey_edit"),
+
+    # Change password
+    url(r'admin/profile/password$', admin.password.index, name="admin_password_index"),
+    url(r'admin/profile/password/validate$', admin.password.validate, name="admin_password_validate"),
+
+    # User and Groups
+    url(r'admin/profile/user', admin.user_views.index, name="admin_user_index"),
 
     # ================================ ADMIN OVER ====================================================
     url(r'^$', views.index.index, name="feedback_index"),

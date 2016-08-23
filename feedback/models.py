@@ -6,12 +6,11 @@ from django.db import models
 from django.utils import timezone
 
 
-class FeedbackUser(models.Model):
-    user_name = models.CharField(max_length=200)
+class UserGroup(models.Model):
+    name = models.CharField(max_length=200)
     date_created = models.DateField()
 
-    @staticmethod
-    def create_users(number):
+    def create_users(self, number):
         for _ in range(number):
             u = FeedbackUser()
             while True:
@@ -19,10 +18,17 @@ class FeedbackUser(models.Model):
                     # noinspection PyArgumentList
                     u.user_name = ''.join([Random.choice(string.ascii_lowercase) for _ in range(6)])
                     u.date_created = timezone.now()
+                    u.group = self
                     u.save()
                     break
                 except Exception:  # TODO
                     pass
+
+
+class FeedbackUser(models.Model):
+    user_name = models.CharField(max_length=200)
+    date_created = models.DateField()
+    group = models.ForeignKey(UserGroup)
 
     def __str__(self):
         return self.user_name
